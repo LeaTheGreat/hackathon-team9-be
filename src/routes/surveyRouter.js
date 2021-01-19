@@ -3,7 +3,7 @@ const Survey = require("../models/survey");
 const router = new express.Router();
 //TODO auth everywhere
 // TODO router.post("/survey", isAdmin, async (req, res) => {
-router.post("/survey/child/:id", async (req, res) => {
+router.post("/child/:id", async (req, res) => {
   const survey = new Survey({
     ...req.body,
   });
@@ -16,7 +16,7 @@ router.post("/survey/child/:id", async (req, res) => {
   }
 });
 
-router.get("/survey/child/:id", async (req, res) => {
+router.get("/child/:id", async (req, res) => {
   console.log(req.params.id);
   try {
     const survey = await Survey.find({ child: req.params.id })
@@ -31,7 +31,7 @@ router.get("/survey/child/:id", async (req, res) => {
   }
 });
 
-router.get("/survey/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const _id = req.params.id;
   console.log(_id);
 

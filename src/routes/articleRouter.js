@@ -3,7 +3,7 @@ const Article = require("../models/article");
 const router = new express.Router();
 
 // TODO router.post("/article", isAdmin, async (req, res) => {
-router.post("/article", async (req, res) => {
+router.post("/", async (req, res) => {
   const article = new Article({
     ...req.body,
   });
@@ -17,7 +17,7 @@ router.post("/article", async (req, res) => {
 });
 
 // GET /article?limit=3
-router.get("/article", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     console.log("article");
     const articles = await Article.find(
@@ -33,7 +33,7 @@ router.get("/article", async (req, res) => {
   }
 });
 
-router.get("/article/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const _id = req.params.id;
   console.log(_id);
 

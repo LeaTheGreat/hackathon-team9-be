@@ -3,7 +3,7 @@ const Option = require("../models/option");
 const router = new express.Router();
 
 // TODO router.post("/option", isAdmin, async (req, res) => {
-router.post("/option", async (req, res) => {
+router.post("/", async (req, res) => {
   const option = new Option({
     ...req.body,
   });
