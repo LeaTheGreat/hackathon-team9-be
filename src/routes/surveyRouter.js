@@ -15,7 +15,7 @@ router.post("/child/:id", async (req, res) => {
     res.status(400).send(e);
   }
 });
-
+//888
 router.get("/child/:id", async (req, res) => {
   console.log(req.params.id);
   try {
