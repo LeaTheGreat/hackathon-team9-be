@@ -5,4 +5,12 @@ const errors = {
     incorrectID: { error: "ID doesn't exist" }
 }
 
-module.exports = errors;
+const errorsArray = (errorObject) => {
+    const eArray = [];
+    for (field in errorObject.errors) {
+       eArray.push(errorObject.errors[field].properties.message);
+    }
+    return eArray;
+}
+
+module.exports = {errors, errorsArray};

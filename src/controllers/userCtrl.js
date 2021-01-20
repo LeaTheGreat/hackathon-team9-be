@@ -4,8 +4,8 @@ const {
     comparePasswords,
     createToken,
 } = require("../utils/helper");
-const errors = require("../utils/error");
 
+const { errors, errorsArray } = require("../utils/error");
 
 const test = async (req, res) => {
     console.log(req.cookies.token);
@@ -26,7 +26,7 @@ const addUser = async (req, res) => {
         const addedUser = await User.add(NewUser);
         res.status(201).send({ id: addedUser._id });
     } catch (e) {
-        return res.send({ error: e });
+        return res.send({ error: errorsArray(e) });
     }
 };
 
@@ -51,7 +51,7 @@ const loginUser = async (req, res) => {
         });
     } catch (e) {
         console.log(e);
-        return res.send({ error: e })
+        return res.send({ error: errorsArray(e) })
     }
     res.json({ id: userDB._id });
 };
@@ -84,7 +84,7 @@ const updateUser = async (req, res) => {
         console.log(updatedUser);
         res.json(updatedUser);
     } catch (e) {
-        return res.send({ error: e });
+        return res.send({ error: errorsArray(e) });
     }
 }
 
