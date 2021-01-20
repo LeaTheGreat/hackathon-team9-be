@@ -2,6 +2,7 @@ const express = require("express");
 const Survey = require("../models/survey");
 const router = new express.Router();
 const { auth } = require("../middlewares/auth");
+const { sendPrediction } = require("../utils/prediction");
 
 router.post("/child/:id", auth, async (req, res) => {
   const survey = new Survey({
@@ -11,6 +12,8 @@ router.post("/child/:id", auth, async (req, res) => {
   try {
     await survey.save();
     res.status(201).send(survey);
+    sendPrediction(survey._id, survey.child);
+    return;
   } catch (e) {
     res.status(400).send(e);
   }
@@ -54,8 +57,8 @@ router.get("/:id", auth, async (req, res) => {
 
   try {
     const survey = await Survey.findOne({ _id })
-      .populate("answers.question")
-      .populate("answers.option")
+      .populate("answers.question", ["_id", "question"])
+      .populate("answers.option", ["option", "weight"])
       .exec();
 
     if (!survey) {

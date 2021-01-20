@@ -1,0 +1,44 @@
+{
+    "answers": [
+        {
+            "question": "A1",
+            "option": "always"
+        },
+        {
+            "question": "A2",
+            "option": "quitedifficult"
+        },
+        {
+            "question": "A3",
+            "option": "afewtimesaweek"
+        },
+        {
+            "question": "A4",
+            "option": "manytimesaday"
+        },
+        {
+            "question": "A5",
+            "option": "lessthanonceaweek"
+        },
+        {
+            "question": "A6",
+            "option": "afewtimesaweek"
+        },
+        {
+            "question": "A7",
+            "option": "never"
+        },
+        {
+            "question": "A8",
+            "option": "veryunusual"
+        },
+        {
+            "question": "A9",
+            "option": "lessthanonceaweek"
+        },
+        {
+            "question": "A10",
+            "option": "lessthanonceaweek"
+        }
+    ]
+}
