@@ -1,4 +1,3 @@
-const { Int32 } = require("mongodb");
 const mongoose = require("mongoose");
 const validator = require("validator");
 
@@ -10,7 +9,7 @@ const childSchema = mongoose.Schema({
         validate: [validator.isAlpha, "Name cannot contain numbers"],
     },
     age: {
-        type: Int32,
+        type: Number,
         required: [true, "Age is required"],
     },
     parent: {
