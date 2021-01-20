@@ -22,6 +22,7 @@ const addChild =  async (req, res) => {
     }
 }
 
+
 const updateChild =  async (req, res) => {
     const infoToUpdate = req.body;
     const id = req.params.id;
