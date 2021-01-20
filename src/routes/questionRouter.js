@@ -1,6 +1,7 @@
 const express = require("express");
 const Question = require("../models/question");
 const router = new express.Router();
+const { auth } = require("../middlewares/auth");
 
 // TODO router.post("/question", isAdmin, async (req, res) => {
 router.post("/", async (req, res) => {
@@ -16,8 +17,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// TODO router.get("/question", auth, async (req, res) => {
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     console.log("question");
     const questions = await Question.find({ use: true }).populate("options");
@@ -27,8 +27,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// TODO router.get("/question/:id", auth, async (req, res) => {
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   const _id = req.params.id;
   console.log(_id);
 
