@@ -10,7 +10,7 @@ const childSchema = mongoose.Schema({
         validate: [validator.isAlpha, "Name cannot contain numbers"],
     },
     age: {
-        type: Number,
+        type: Int32,
         required: [true, "Age is required"],
     },
     parent: {
