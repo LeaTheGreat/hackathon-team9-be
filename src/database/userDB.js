@@ -1,5 +1,5 @@
 const { ObjectId } = require('mongodb');
-const { User } = require('../models/user');
+const User = require('../models/user');
 
 class userMethods {
 

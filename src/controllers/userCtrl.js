@@ -76,7 +76,7 @@ const updateUser = async (req, res) => {
     const infoToUpdate = req.body;
     const id = req.params.id;
     try {
-        if(infoToUpdate.password) {
+        if (infoToUpdate.password) {
             const hasedPassword = await hashPassword(infoToUpdate.password);
             infoToUpdate.password = hasedPassword;
         }
