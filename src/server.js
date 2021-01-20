@@ -11,7 +11,8 @@ const app = express();
 /* Middleware */
 app.use(
     cors({
-        origin: "http://localhost:3000", //  Need to change once we deploy the app
+        origin: true,
+        //origin: "http://localhost:3000", //  Need to change once we deploy the app
         credentials: true,
     })
 );
