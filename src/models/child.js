@@ -8,9 +8,22 @@ const childSchema = mongoose.Schema({
         minlength: [2, "Name must be atleast 3 characters long"],
         validate: [validator.isAlpha, "Name cannot contain numbers"],
     },
-    age: {
+    age_month: {
         type: Number,
         required: [true, "Age is required"],
+    },
+    sex : {
+        type: String,
+        enum: ["Male", "Female", "Other"],
+        required: [true, "sex is required"],
+    },
+    jaundice : {
+        type : Boolean,
+        default: null
+    },
+    family_mem_with_ASD : {
+        type : Boolean,
+        default: null,
     },
     parent: {
         type: mongoose.Schema.Types.ObjectId,
