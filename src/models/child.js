@@ -12,17 +12,17 @@ const childSchema = mongoose.Schema({
         type: Number,
         required: [true, "Age is required"],
     },
-    sex : {
+    sex: {
         type: String,
         enum: ["Male", "Female", "Other"],
         required: [true, "sex is required"],
     },
-    jaundice : {
-        type : Boolean,
+    jaundice: {
+        type: Boolean,
         default: null
     },
-    family_mem_with_ASD : {
-        type : Boolean,
+    family_mem_with_ASD: {
+        type: Boolean,
         default: null,
     },
     parent: {
@@ -34,6 +34,11 @@ const childSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         default: null,
+    },
+    status: {
+        type: String,
+        enum: ["Tested", "Not Tested", "Have Recommendations"],
+        default: "Not Tested"
     },
 });
 
