@@ -16,14 +16,14 @@ const userSchema = mongoose.Schema({
   firstName: {
     type: String,
     required: [true, "First name is required"],
-    minlength: [3, "First name must be atleast 3 characters long"],
+    minlength: [3, "First name must be at least 3 characters long"],
     maxlength: [20, "First name cannot be longer than 20 characters"],
     validate: [validator.isAlpha, "First name cannot contain numbers"],
   },
   lastName: {
     type: String,
     required: [true, "Last name is required"],
-    minlength: [3, "Last name must be atleast 3 characters long"],
+    minlength: [3, "Last name must be at least 3 characters long"],
     maxlength: [20, "Last name cannot be longer than 20 characters"],
     validate: [validator.isAlpha, "Last name cannot contain numbers"],
   },
@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema({
   },
   role: {
     type: String,
-    required: [true, "user must have a role"],
+    required: [true, "User must have a role"],
     enum: ["Admin", "Doctor", "Parent"],
   },
 });
