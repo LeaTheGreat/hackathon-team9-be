@@ -3,6 +3,7 @@ const Survey = require("../models/survey");
 const router = new express.Router();
 const { auth } = require("../middlewares/auth");
 const { sendPrediction } = require("../utils/prediction");
+const Child = require("../services/childService");
 
 router.post("/child/:id", auth, async (req, res) => {
   const survey = new Survey({
@@ -11,6 +12,8 @@ router.post("/child/:id", auth, async (req, res) => {
   survey.child = req.params.id;
   try {
     await survey.save();
+    const updatedChild = await Child.updateChildStatus(survey.child, "Tested");
+    console.log("change status: ", updatedChild.status);
     res.status(201).send(survey);
     sendPrediction(survey._id, survey.child);
     return;
