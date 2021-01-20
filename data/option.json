@@ -1,0 +1,97 @@
+[
+    {
+        "_id": "always",
+        "option": "Always",
+        "weight": 0
+    },
+    {
+        "_id": "usually",
+        "option": "Usually",
+        "weight": 1
+    },
+    {
+        "_id": "sometimes",
+        "option": "Sometimes",
+        "weight": 2
+    },
+    {
+        "_id": "rarely",
+        "option": "Rarely",
+        "weight": 3
+    },
+    {
+        "_id": "never",
+        "option": "Never",
+        "weight": 4
+    },
+    {
+        "_id": "veryeasy",
+        "option": "Very easy",
+        "weight": 0
+    },
+    {
+        "_id": "quiteeasy",
+        "option": "Quite easy",
+        "weight": 1
+    },
+    {
+        "_id": "quitedifficult",
+        "option": "Quite difficult",
+        "weight": 2
+    },
+    {
+        "_id": "verydifficult",
+        "option": "Very difficult",
+        "weight": 3
+    },
+    {
+        "_id": "impossible",
+        "option": "Impossible",
+        "weight": 4
+    },
+    {
+        "_id": "manytimesaday",
+        "option": "Many times a day",
+        "weight": 0
+    },
+    {
+        "_id": "afewtimesaday",
+        "option": "A few times a day",
+        "weight": 1
+    },
+    {
+        "_id": "afewtimesaweek",
+        "option": "A few times a week",
+        "weight": 2
+    },
+    {
+        "_id": "lessthanonceaweek",
+        "option": "Less than once a week",
+        "weight": 3
+    },
+    {
+        "_id": "verytypical",
+        "option": "Very typical",
+        "weight": 0
+    },
+    {
+        "_id": "quitetypical",
+        "option": "Quite typical",
+        "weight": 1
+    },
+    {
+        "_id": "slightlyunusualy",
+        "option": "Slightly unusual",
+        "weight": 2
+    },
+    {
+        "_id": "veryunusual",
+        "option": "Very unusual",
+        "weight": 3
+    },
+    {
+        "_id": "mychilddoesntspeak",
+        "option": "My child doesn’t speak",
+        "weight": 4
+    }
+]

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const questionSchema = new mongoose.Schema(
   {
+    _id: { type: String },
     question: {
       type: String,
       required: true,

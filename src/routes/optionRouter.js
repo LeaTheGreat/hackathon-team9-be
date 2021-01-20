@@ -16,4 +16,19 @@ router.post("/", async (req, res) => {
   }
 });
 
+// TODO router.post("/array", isAdmin, async (req, res) => {
+router.post("/array", async (req, res) => {
+  try {
+    for (const item of req.body) {
+      const option = new Option({
+        ...item,
+      });
+      await option.save();
+    }
+    res.status(201).send("succeed");
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 module.exports = router;
