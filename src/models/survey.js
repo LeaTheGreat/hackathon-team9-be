@@ -12,6 +12,8 @@ const surveySchema = new mongoose.Schema(
         option: { type: String, ref: "Option" },
       },
     ],
+    prediction: Number,
+    prediction_probability: Number,
   },
   {
     toJSON: { virtuals: true },

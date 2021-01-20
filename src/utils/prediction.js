@@ -11,24 +11,36 @@ const sendPrediction = async (surveyID, childID) => {
     .exec()
     .then((res) => {
       Child.getById(childID).then((child) => {
-        const finalSurvey = {};
-        for (const answer of res.answers) {
-          finalSurvey[answer.question._id] = answer.option.weight;
-        }
-        finalSurvey.age_month = child.age_month;
-        finalSurvey.sex = child.sex == "Male" ? 0 : 1;
-        finalSurvey.jaundice = child.jaundice ? 1 : 0;
-        finalSurvey.family_mem_with_ASD = child.family_mem_with_ASD ? 1 : 0;
+        const finalSurvey = formFinalSurvey(res.answers, child);
         console.log(finalSurvey);
         try {
           axios.post(baseUrl + "/api/predict", { finalSurvey }).then((res) => {
-            console.log(res.data);
+            savePredictionToSurvey(surveyID, res.data);
           });
         } catch (err) {
           return err;
         }
       });
     });
+};
+
+const formFinalSurvey = (answers, child) => {
+  const finalSurvey = {};
+  for (const answer of answers) {
+    finalSurvey[answer.question._id] = answer.option.weight;
+  }
+  finalSurvey.age_month = child.age_month;
+  finalSurvey.sex = child.sex == "Male" ? 0 : 1;
+  finalSurvey.jaundice = child.jaundice ? 1 : 0;
+  finalSurvey.family_mem_with_ASD = child.family_mem_with_ASD ? 1 : 0;
+  return finalSurvey;
+};
+
+const savePredictionToSurvey = async (surveyID, data) => {
+  const survey = await Survey.findOne({ _id: surveyID });
+  survey.prediction = data.prediction;
+  survey.prediction_probability = data.prediction_probability;
+  await survey.save();
 };
 
 module.exports = { sendPrediction };

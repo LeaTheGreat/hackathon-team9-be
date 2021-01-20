@@ -19,6 +19,7 @@ router.post("/child/:id", auth, async (req, res) => {
   }
 });
 
+// return last created survey
 router.get("/child/:id", auth, async (req, res) => {
   console.log(req.params.id);
   try {
