@@ -6,6 +6,12 @@ class child {
   getById = (id) => {
     return this.db.get(id);
   };
+  getAllDoctorRelated = (id) => {
+    return this.db.getAllDoctorRelated(id);
+  }
+  getAllWithoutDoctor = () => {
+    return this.db.getAllWithoutDoctor();
+  }
   add = (user) => {
     return this.db.add(user);
   };

@@ -12,6 +12,17 @@ class childMethods {
         }
     }
 
+    async getAllDoctorRelated(id) {
+        const childrenDB = await Child.find({ doctor : id})
+        return childrenDB;
+    }
+
+    async getAllWithoutDoctor() {
+        const childrenDB = await Child.find({ doctor : null})
+        console.log(childrenDB);
+        return childrenDB;
+    }
+
     async add(child) {
         const childDB = await Child.create({ ...child });
         return childDB;

@@ -1,7 +1,7 @@
 const Child = require("../services/childService");
 const errors = require("../utils/error");
 
-const getChildById =  async (req, res) => {
+const getChildById = async (req, res) => {
     const childDB = await Child.getById(req.params.id);
     if (!childDB || childDB.error) {
         return res.send(errors.incorrectID);
@@ -9,7 +9,30 @@ const getChildById =  async (req, res) => {
     res.json(childDB);
 }
 
-const addChild =  async (req, res) => {
+const getAllChildrenWithoutDoctor = async (req, res) => { 
+    try {   
+        const children = await Child.getAllWithoutDoctor();
+        res.json(children);
+    } catch(e) {
+        return res.send({ error: e });
+    }
+    
+}
+
+const getAllChildrenRelatedToDoctor = async (req, res) => { 
+    const id = req.params.id
+    if(!id) {
+        return res.send(errors.incorrectID);
+    }
+    try {
+        const children = await Child.getAllDoctorRelated(id);
+        res.json(children);
+    } catch (e) {
+        return res.send({ error: e });
+    }
+}
+
+const addChild = async (req, res) => {
     const NewChild = req.body.child;
     if (!NewChild) {
         return res.send(errors.missingParams);
@@ -23,7 +46,7 @@ const addChild =  async (req, res) => {
 }
 
 
-const updateChild =  async (req, res) => {
+const updateChild = async (req, res) => {
     const infoToUpdate = req.body;
     const id = req.params.id;
     try {
@@ -34,21 +57,23 @@ const updateChild =  async (req, res) => {
     }
 }
 
-const deleteChild =  async (req, res) => {
+const deleteChild = async (req, res) => {
     const id = req.params.id;
-    if(!id) {
+    if (!id) {
         return res.send(errors.incorrectID);
     }
     try {
         const deleted = await Child.delete(id);
         res.status(201).send(deleted._id);
-    } catch(e) {
+    } catch (e) {
         return res.send({ error: e });
     }
-} 
+}
 
 module.exports = {
     getChildById,
+    getAllChildrenWithoutDoctor,
+    getAllChildrenRelatedToDoctor,
     addChild,
     updateChild,
     deleteChild
