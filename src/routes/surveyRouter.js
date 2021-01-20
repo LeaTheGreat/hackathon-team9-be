@@ -1,7 +1,8 @@
 const express = require("express");
 const Survey = require("../models/survey");
 const router = new express.Router();
-//TODO auth everywhere
+const { auth } = require("../middlewares/auth");
+
 // TODO router.post("/survey", isAdmin, async (req, res) => {
 router.post("/child/:id", async (req, res) => {
   const survey = new Survey({
@@ -15,8 +16,8 @@ router.post("/child/:id", async (req, res) => {
     res.status(400).send(e);
   }
 });
-//888
-router.get("/child/:id", async (req, res) => {
+
+router.get("/child/:id", auth, async (req, res) => {
   console.log(req.params.id);
   try {
     const survey = await Survey.find({ child: req.params.id })
@@ -31,7 +32,7 @@ router.get("/child/:id", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   const _id = req.params.id;
   console.log(_id);
 
