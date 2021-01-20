@@ -3,8 +3,7 @@ const Survey = require("../models/survey");
 const router = new express.Router();
 const { auth } = require("../middlewares/auth");
 
-// TODO router.post("/survey", isAdmin, async (req, res) => {
-router.post("/child/:id", async (req, res) => {
+router.post("/child/:id", auth, async (req, res) => {
   const survey = new Survey({
     ...req.body,
   });
@@ -21,12 +20,29 @@ router.get("/child/:id", auth, async (req, res) => {
   console.log(req.params.id);
   try {
     const survey = await Survey.find({ child: req.params.id })
-      .populate("answers.question")
-      .populate("answers.option")
+      .populate("answers.question", ["_id", "question"])
+      .populate("answers.option", ["option", "weight"])
       .exec();
-    console.log(survey);
 
-    res.status(200).send(survey);
+    res.status(200).send(survey[0]);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+router.get("/child/:id/short", auth, async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const survey = await Survey.find({ child: req.params.id })
+      .populate("answers.question", ["_id", "question"])
+      .populate("answers.option", ["option", "weight"])
+      .exec();
+    const finalSurvey = {};
+    for (const answer of survey[0].answers) {
+      finalSurvey[answer.question._id] = answer.option.weight;
+    }
+    console.log(finalSurvey);
+    res.status(200).send(finalSurvey);
   } catch (e) {
     res.status(500).send(e);
   }

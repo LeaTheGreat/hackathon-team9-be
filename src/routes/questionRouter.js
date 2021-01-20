@@ -3,7 +3,7 @@ const Question = require("../models/question");
 const router = new express.Router();
 const { auth } = require("../middlewares/auth");
 
-// TODO router.post("/question", isAdmin, async (req, res) => {
+// TODO router.post("/", isAdmin, async (req, res) => {
 router.post("/", async (req, res) => {
   const question = new Question({
     ...req.body,
@@ -12,6 +12,21 @@ router.post("/", async (req, res) => {
   try {
     await question.save();
     res.status(201).send(question);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+// TODO router.post("/array", isAdmin, async (req, res) => {
+router.post("/array", async (req, res) => {
+  try {
+    for (const item of req.body) {
+      const question = new Question({
+        ...item,
+      });
+      await question.save();
+    }
+    res.status(201).send("succeed");
   } catch (e) {
     res.status(400).send(e);
   }

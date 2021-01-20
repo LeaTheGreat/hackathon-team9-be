@@ -1,0 +1,112 @@
+[
+    {
+        "_id": "A1",
+        "question": "Does your child look at you when you call his/her name?",
+        "options": [
+            "always",
+            "usually",
+            "sometimes",
+            "rarely",
+            "never"
+        ]
+    },
+    {
+        "_id": "A2",
+        "question": "How easy is it for you to get eye contact with your child?",
+        "options": [
+            "veryeasy",
+            "quiteeasy",
+            "quitedifficult",
+            "verydifficult",
+            "impossible"
+        ]
+    },
+    {
+        "_id": "A3",
+        "question": "Does your child point to indicate that s/he wants something? (e.g. a toy that is out of reach)",
+        "options": [
+            "manytimesaday",
+            "afewtimesaday",
+            "afewtimesaweek",
+            "lessthanonceaweek",
+            "never"
+        ]
+    },
+    {
+        "_id": "A4",
+        "question": "Does your child point to share interest with you? (e.g. pointing at an interesting sight)",
+        "options": [
+            "manytimesaday",
+            "afewtimesaday",
+            "afewtimesaweek",
+            "lessthanonceaweek",
+            "never"
+        ]
+    },
+    {
+        "_id": "A5",
+        "question": "Does your child pretend? (e.g. care for dolls, talk on a toy phone)",
+        "options": [
+            "manytimesaday",
+            "afewtimesaday",
+            "afewtimesaweek",
+            "lessthanonceaweek",
+            "never"
+        ]
+    },
+    {
+        "_id": "A6",
+        "question": "Does your child follow where you’re looking?",
+        "options": [
+            "manytimesaday",
+            "afewtimesaday",
+            "afewtimesaweek",
+            "lessthanonceaweek",
+            "never"
+        ]
+    },
+    {
+        "_id": "A7",
+        "question": "If you or someone else in the family is visibly upset, does your child show signs of wanting to comfort them? (e.g. stroking hair, hugging them)",
+        "options": [
+            "always",
+            "usually",
+            "sometimes",
+            "rarely",
+            "never"
+        ]
+    },
+    {
+        "_id": "A8",
+        "question": "Would you describe your child’s first words as:",
+        "options": [
+            "verytypical",
+            "quitetypical",
+            "slightlyunusualy",
+            "veryunusual",
+            "mychilddoesntspeak"
+        ]
+    },
+    {
+        "_id": "A9",
+        "question": "Does your child use simple gestures? (e.g. wave goodbye)",
+        "options": [
+            "manytimesaday",
+            "afewtimesaday",
+            "afewtimesaweek",
+            "lessthanonceaweek",
+            "never"
+        ]
+    },
+    {
+        "_id": "A10",
+        "question": "Does your child stare at nothing with no apparent purpose?",
+        "options": [
+            "manytimesaday",
+            "afewtimesaday",
+            "afewtimesaweek",
+            "lessthanonceaweek",
+            "never"
+        ]
+    }
+]
