@@ -26,6 +26,7 @@ router.get("/child/:id", auth, async (req, res) => {
     const survey = await Survey.find({ child: req.params.id })
       .populate("answers.question", ["_id", "question"])
       .populate("answers.option", ["option", "weight"])
+      .sort({ createdAt: "desc" })
       .exec();
 
     res.status(200).send(survey[0]);
