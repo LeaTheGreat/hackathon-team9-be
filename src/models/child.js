@@ -10,19 +10,17 @@ const childSchema = mongoose.Schema({
     },
     age: {
         type: Number,
+        required: [true, "Age is required"],
     },
     parent: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required: [true, "Parent is required"],
     },
     doctor: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-    },
-    role: {
-        type: String,
-        required: [true, "user must have a role"],
-        enum: ["Admin", "Doctor", "Parent"],
+        default: null,
     },
 });
 

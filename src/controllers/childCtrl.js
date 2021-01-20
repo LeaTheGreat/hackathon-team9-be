@@ -1,4 +1,5 @@
 const Child = require("../services/childService");
+const errors = require("../utils/error");
 
 const getChildById =  async (req, res) => {
     const childDB = await Child.getById(req.params.id);
@@ -26,7 +27,6 @@ const updateChild =  async (req, res) => {
     const id = req.params.id;
     try {
         const updatedChild = await Child.updateChild(id, infoToUpdate);
-        console.log(updatedChild);
         res.json(updatedChild);
     } catch (e) {
         return res.send({ error: e });
@@ -34,7 +34,16 @@ const updateChild =  async (req, res) => {
 }
 
 const deleteChild =  async (req, res) => {
-
+    const id = req.params.id;
+    if(!id) {
+        return res.send(errors.incorrectID);
+    }
+    try {
+        const deleted = await Child.delete(id);
+        res.status(201).send(deleted._id);
+    } catch(e) {
+        return res.send({ error: e });
+    }
 } 
 
 module.exports = {

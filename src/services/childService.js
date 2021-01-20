@@ -1,5 +1,5 @@
 const { childMethods } = require("../database/childDB");
-class user {
+class child {
   constructor() {
     this.db = new childMethods;
   }
@@ -12,6 +12,9 @@ class user {
   updateChild = (id, updatedInfo) => {
     return this.db.updateChild(id, updatedInfo);
   };
+  delete = (id) => {
+    return this.db.delete(id);
+  }
 }
 
 module.exports = new child();

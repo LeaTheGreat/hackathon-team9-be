@@ -8,8 +8,8 @@ router.get('/:id', auth, getChildById);
 
 router.post('/', addChild);
 
-router.put('/:id', auth, updateChild)
+router.put('/:id', updateChild)
 
-router.delete('/:id', auth, deleteChild)
+router.delete('/:id', deleteChild)
 
 module.exports = router;

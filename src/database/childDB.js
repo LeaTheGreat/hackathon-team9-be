@@ -27,8 +27,12 @@ class childMethods {
                 useFindAndModify: false,
                 runValidators: true
             });
-        console.log(updatedChildDB)
         return updatedChildDB;
+    }
+
+    async delete(id) {
+        const deleted = await Child.findByIdAndDelete(id);
+        return deleted;
     }
 }
 

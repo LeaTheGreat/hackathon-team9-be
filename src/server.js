@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use("/api/users", require("./routes/userRouter"));
+app.use("/api/child", require("./routes/childRouter"));
 app.use("/api/survey", require("./routes/surveyRouter"));
 app.use("/api/article", require("./routes/articleRouter"));
 app.use("/api/option", require("./routes/optionRouter"));
