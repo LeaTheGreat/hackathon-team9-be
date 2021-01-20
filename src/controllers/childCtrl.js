@@ -34,8 +34,8 @@ const updateChild =  async (req, res) => {
 }
 
 const deleteChild =  async (req, res) => {
-    
-}
+
+} 
 
 module.exports = {
     getChildById,
