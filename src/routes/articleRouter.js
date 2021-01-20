@@ -1,9 +1,10 @@
 const express = require("express");
 const Article = require("../models/article");
+const { isAdmin } = require("../middlewares/auth");
+
 const router = new express.Router();
 
-// TODO router.post("/article", isAdmin, async (req, res) => {
-router.post("/", async (req, res) => {
+router.post("/", isAdmin, async (req, res) => {
   const article = new Article({
     ...req.body,
   });
@@ -19,7 +20,6 @@ router.post("/", async (req, res) => {
 // GET /article?limit=3
 router.get("/", async (req, res) => {
   try {
-    console.log("article");
     const articles = await Article.find(
       {},
       ["caption", "picture", "shorttext"],

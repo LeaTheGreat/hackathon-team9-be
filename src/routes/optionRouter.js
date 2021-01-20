@@ -1,9 +1,9 @@
 const express = require("express");
 const Option = require("../models/option");
 const router = new express.Router();
+const { isAdmin } = require("../middlewares/auth");
 
-// TODO router.post("/option", isAdmin, async (req, res) => {
-router.post("/", async (req, res) => {
+router.post("/", isAdmin, async (req, res) => {
   const option = new Option({
     ...req.body,
   });
@@ -16,8 +16,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// TODO router.post("/array", isAdmin, async (req, res) => {
-router.post("/array", async (req, res) => {
+router.post("/array", isAdmin, async (req, res) => {
   try {
     for (const item of req.body) {
       const option = new Option({

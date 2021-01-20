@@ -1,10 +1,9 @@
 const express = require("express");
 const Question = require("../models/question");
 const router = new express.Router();
-const { auth } = require("../middlewares/auth");
+const { auth, isAdmin } = require("../middlewares/auth");
 
-// TODO router.post("/", isAdmin, async (req, res) => {
-router.post("/", async (req, res) => {
+router.post("/", isAdmin, async (req, res) => {
   const question = new Question({
     ...req.body,
   });
@@ -17,8 +16,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// TODO router.post("/array", isAdmin, async (req, res) => {
-router.post("/array", async (req, res) => {
+router.post("/array", isAdmin, async (req, res) => {
   try {
     for (const item of req.body) {
       const question = new Question({
