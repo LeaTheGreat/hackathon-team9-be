@@ -9,19 +9,19 @@ const getChildById = async (req, res) => {
     res.json(childDB);
 }
 
-const getAllChildrenWithoutDoctor = async (req, res) => { 
-    try {   
+const getAllChildrenWithoutDoctor = async (req, res) => {
+    try {
         const children = await Child.getAllWithoutDoctor();
         res.json(children);
-    } catch(e) {
+    } catch (e) {
         return res.send({ error: e });
     }
-    
+
 }
 
-const getAllChildrenRelatedToDoctor = async (req, res) => { 
+const getAllChildrenRelatedToDoctor = async (req, res) => {
     const id = req.params.id
-    if(!id) {
+    if (!id) {
         return res.send(errors.incorrectID);
     }
     try {
@@ -32,15 +32,16 @@ const getAllChildrenRelatedToDoctor = async (req, res) => {
     }
 }
 
-const getAllChildrenRelatedToParent = async (req,res) => {
+const getAllChildrenRelatedToParent = async (req, res) => {
     const id = req.params.id
-    if(!id) {
+    if (!id) {
         return res.send(errors.incorrectID);
     }
     try {
-        const children = await Child.getAllDoctorRelated(id);
+        const children = await Child.getAllParentRelated(id);
         res.json(children);
     } catch (e) {
+        console.log(e);
         return res.send({ error: e });
     }
 }
