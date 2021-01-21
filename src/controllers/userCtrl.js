@@ -53,7 +53,7 @@ const loginUser = async (req, res) => {
         console.log(e);
         return res.send({ error: errorsArray(e) })
     }
-    res.json({ id: userDB._id });
+    res.json({ id: userDB._id, role: userDB.role });
 };
 
 const getUserById = async (req, res) => {
@@ -88,11 +88,17 @@ const updateUser = async (req, res) => {
     }
 }
 
+const logoutUser = async (req, res) => {
+    res.clearCookie('token');
+    res.send("deleted token")
+}
+
 
 module.exports = {
     test,
     addUser,
     loginUser,
     getUserById,
-    updateUser
+    updateUser,
+    logoutUser
 };

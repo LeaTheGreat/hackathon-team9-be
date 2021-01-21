@@ -12,6 +12,9 @@ class child {
   getAllWithoutDoctor = () => {
     return this.db.getAllWithoutDoctor();
   }
+  getAllParentRelated = (id) => {
+    return this.db.getAllParentRelated(id);
+  }
   add = (user) => {
     return this.db.add(user);
   };

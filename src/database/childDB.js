@@ -23,6 +23,11 @@ class childMethods {
         return childrenDB;
     }
 
+    async getAllParentRelated() {
+        const childrenDB = await Child.find({ parent : id})
+        return childrenDB;
+    }
+
     async add(child) {
         const childDB = await Child.create({ ...child });
         return childDB;

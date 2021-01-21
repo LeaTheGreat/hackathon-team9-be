@@ -32,6 +32,19 @@ const getAllChildrenRelatedToDoctor = async (req, res) => {
     }
 }
 
+const getAllChildrenRelatedToParent = async (req,res) => {
+    const id = req.params.id
+    if(!id) {
+        return res.send(errors.incorrectID);
+    }
+    try {
+        const children = await Child.getAllDoctorRelated(id);
+        res.json(children);
+    } catch (e) {
+        return res.send({ error: e });
+    }
+}
+
 const addChild = async (req, res) => {
     const NewChild = req.body.child;
     if (!NewChild) {
@@ -74,6 +87,7 @@ module.exports = {
     getChildById,
     getAllChildrenWithoutDoctor,
     getAllChildrenRelatedToDoctor,
+    getAllChildrenRelatedToParent,
     addChild,
     updateChild,
     deleteChild
