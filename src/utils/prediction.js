@@ -14,7 +14,7 @@ const sendPrediction = async (surveyID, childID) => {
         const finalSurvey = formFinalSurvey(res.answers, child);
         console.log(finalSurvey);
         try {
-          axios.post(baseUrl + "/api/predict", { finalSurvey }).then((res) => {
+          axios.post(baseUrl + "/api/predict", finalSurvey).then((res) => {
             savePredictionToSurvey(surveyID, res.data);
           });
         } catch (err) {
